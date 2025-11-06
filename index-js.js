@@ -1,11 +1,11 @@
-import {createWalletClient} from "https://esm.sh/viem"
+import {createWalletClient, custom} from "https://esm.sh/viem"
 
 const connectButton = document.getElementById("connectButton")
 
 let walletClient
 async function connect() {
     if (typeof window.ethereum !== "undefined") {
-        createWalletClient({
+        walletClient = createWalletClient({
             transport: custom(window.ethereum)
         })
        await walletClient.requestAddresses()
